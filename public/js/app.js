@@ -1,4 +1,3 @@
-import { models } from './data/models.js';
 import { whatsappUrl as whatsapp } from './data/store.js';
 
 const $ = (selector) => document.querySelector(selector);
@@ -28,12 +27,14 @@ const announcer = document.createElement('p');
 announcer.className = 'visually-hidden'; announcer.setAttribute('role','status');
 document.body.append(announcer);
 
-let activeModel = models[0];
+let models = [];
+let activeModel = null;
 let activePhotoIndex = 0;
 let dialogOpener = null;
 const photoDialog = $('#photo-dialog');
 
 function updateDialogPhoto() {
+  if (!activeModel) return;
   const photo = makePhoto(activeModel,true,activePhotoIndex);
   photo.id = 'dialog-photo';
   $('#dialog-photo').replaceWith(photo);
@@ -42,6 +43,7 @@ function updateDialogPhoto() {
 }
 
 function showPhoto(index) {
+  if (!activeModel) return;
   activePhotoIndex = (index + activeModel.photos.length) % activeModel.photos.length;
   const photo = makePhoto(activeModel,true,activePhotoIndex);
   photo.id = 'model-photo'; photo.classList.add('model-photo');
@@ -87,6 +89,7 @@ $('#gallery-next').addEventListener('click',() => showPhoto(activePhotoIndex + 1
 $('#dialog-previous').addEventListener('click',() => showPhoto(activePhotoIndex - 1));
 $('#dialog-next').addEventListener('click',() => showPhoto(activePhotoIndex + 1));
 $('#gallery-open').addEventListener('click',event => {
+  if (!activeModel) return;
   dialogOpener = event.currentTarget;
   updateDialogPhoto();
   photoDialog.showModal();
@@ -169,25 +172,50 @@ function selectModel(id, announce = true) {
   if(announce) announcer.textContent = `Modelo ${model.name} selecionado. Foto e ficha técnica atualizadas.`;
 }
 
-const grid = $('#model-grid');
-for(const model of models) {
+function renderCatalog() {
+ const grid = $('#model-grid'); grid.replaceChildren();
+ const switcher = $('.model-switcher'); switcher.replaceChildren();
+ for(const model of models) {
+  const selector = document.createElement('button'); selector.type = 'button';
+  selector.dataset.model = model.id; selector.textContent = model.name; selector.setAttribute('aria-pressed','false');
+  switcher.append(selector);
   const article = document.createElement('article'); article.className = 'model-card';
   const photo = makePhoto(model);
   const heading = document.createElement('div'); heading.className = 'model-card-name';
   const title = document.createElement('h3'); title.textContent = model.name;
   const button = document.createElement('button'); button.type = 'button'; button.textContent = 'Ver modelo'; button.dataset.selectModel = model.id;
   button.setAttribute('aria-label',`Ver detalhes do ${model.name}`);
-  const caption = document.createElement('p'); caption.textContent = model.id === 'cappuccino' ? 'Estilo retrô' : model.features[0];
+  const caption = document.createElement('p'); caption.textContent = model.id === 'cappuccino' ? 'Estilo retrô' : model.features[0] || model.character || model.motor;
   heading.append(title,button); article.append(photo,heading,caption); grid.append(article);
+ }
+ switcher.hidden = !models.length;
+ $('#modelo').hidden = !models.length;
+ $('.collection').hidden = !models.length;
+ const first = models[0];
+ const hero = $('.hero-photo');
+ const image = hero.querySelector('img');
+ image.src = first?.photos[0].src || './assets/store/store-front.jpeg';
+ image.alt = first ? `${first.name}, autopropelido da fourBike` : 'Conheça a loja fourBike em Leme';
+ hero.classList.toggle('studio-photo',Boolean(first?.photos[0].studio));
+ hero.classList.toggle('original-photo',!first?.photos[0].studio);
+ $('.hero-caption span').textContent = first ? `Conheça o ${first.name}` : 'Venha conhecer a fourBike';
+ const link = $('.hero-caption a');
+ link.href = first ? '#modelo' : '#loja';
+ link.setAttribute('aria-label',first ? `Ver detalhes do ${first.name}` : 'Conhecer a loja');
+ if(first) { link.dataset.selectModel = first.id; selectModel(first.id,false); }
+ else { delete link.dataset.selectModel; activeModel = null; }
 }
 
-document.querySelectorAll('[data-model]').forEach(button => button.addEventListener('click',() => selectModel(button.dataset.model)));
-document.querySelectorAll('[data-select-model]').forEach(control => control.addEventListener('click',event => {
+document.addEventListener('click',event => {
+  const button = event.target.closest('[data-model]');
+  if(button) selectModel(button.dataset.model);
+  const control = event.target.closest('[data-select-model]');
+  if(!control) return;
   event.preventDefault(); selectModel(control.dataset.selectModel);
   const target = $('#modelo');
   target.focus({preventScroll:true});
   target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',block:'start'});
-}));
+});
 document.querySelectorAll('[data-whatsapp]').forEach(link => link.href = whatsapp('Olá! Conheci a fourBike pelo site e gostaria de conversar com a equipe.'));
 
 const menuButton = $('.menu-toggle');
@@ -201,4 +229,24 @@ menu.querySelectorAll('a').forEach(link => link.addEventListener('click',closeMe
 document.addEventListener('keydown',event => { if(event.key === 'Escape' && menu.classList.contains('is-open')) { closeMenu(); menuButton.focus(); } });
 matchMedia('(min-width: 801px)').addEventListener('change',event => { if(event.matches) closeMenu(); });
 
-selectModel('x18',false);
+async function loadCatalog() {
+  const status = $('#catalog-status');
+  status.textContent = 'Carregando modelos…'; status.hidden = false;
+  $('#catalog-retry').hidden = true;
+  try {
+    const response = await fetch('/api/models',{cache:'no-store'});
+    if(!response.ok) throw Error();
+    const data = await response.json();
+    if(!Array.isArray(data.models)) throw Error();
+    models = data.models;
+    renderCatalog();
+    status.textContent = models.length ? '' : 'Estamos atualizando nossos modelos. Converse com a equipe pelo WhatsApp ou visite nossa loja.';
+    status.hidden = models.length > 0;
+  } catch {
+    models = []; renderCatalog();
+    status.textContent = 'Não foi possível carregar os modelos. Tente novamente ou converse com a equipe pelo WhatsApp.';
+    $('#catalog-retry').hidden = false;
+  }
+}
+$('#catalog-retry').addEventListener('click',loadCatalog);
+loadCatalog();

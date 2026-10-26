@@ -15,7 +15,7 @@ async function sourceFiles(directory) {
   return files;
 }
 
-const files = (await Promise.all(['public/js','scripts','tests'].map(folder => sourceFiles(path.join(root, folder))))).flat();
+const files = (await Promise.all(['public/js','admin','server','scripts','tests'].map(folder => sourceFiles(path.join(root, folder))))).flat();
 for (const file of files) {
   const result = spawnSync(process.execPath, ['--check', file], { encoding:'utf8', windowsHide:true });
   if (result.error || result.status !== 0) {

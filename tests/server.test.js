@@ -160,7 +160,7 @@ describe('local public-file server', () => {
   it('explains an invalid CLI port and exits without starting a server', () => {
     for (const port of ['abc', '-1', '65536', '1.5', '']) {
       const result = spawnSync(process.execPath, [script], {
-        env: { ...process.env, PORT: port },
+        env: { ...process.env, PORT: port, FOURBIKE_DATA_DIR:path.join(directory, 'cli-data') },
         encoding: 'utf8',
         timeout: 3000,
         windowsHide: true,
@@ -173,7 +173,7 @@ describe('local public-file server', () => {
 
   it('explains an occupied CLI port without killing the existing listener', async () => {
     const result = spawnSync(process.execPath, [script], {
-      env: { ...process.env, PORT: String(server.address().port) },
+      env: { ...process.env, PORT: String(server.address().port), FOURBIKE_DATA_DIR:path.join(directory, 'cli-data') },
       encoding: 'utf8',
       timeout: 3000,
       windowsHide: true,

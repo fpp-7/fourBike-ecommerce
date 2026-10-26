@@ -3,6 +3,7 @@
 /docs/discovery/
 /dist/
 /tmp/
+/data/
 
 # Dependencies, local configuration and generated output.
 node_modules/

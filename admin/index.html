@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light">
+  <title>Administração — fourBike</title>
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/admin/admin.css">
+  <script src="/admin/admin.js" type="module"></script>
+</head>
+<body>
+  <header class="admin-header">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="fourBike, abrir site"><img src="/assets/brand/fourbike.png" alt="fourBike Motos Elétricas" width="1983" height="793"></a>
+      <span class="header-title">Administração</span>
+      <div class="header-actions" id="session-actions" hidden>
+        <a class="header-link" href="/" target="_blank" rel="noopener noreferrer">Ver site</a>
+        <span id="session-name"></span>
+        <button class="logout-button" id="logout-button" type="button">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <p class="loading-message" id="loading-message" role="status">Verificando acesso…</p>
+
+    <section class="login-panel" id="login-view" aria-labelledby="login-title" hidden>
+      <h1 id="login-title">Entrar no painel.</h1>
+      <p class="intro">Gerencie os modelos exibidos no site da fourBike.</p>
+      <p class="form-message" id="login-message" role="status" aria-live="polite" hidden></p>
+      <form id="login-form">
+        <label for="username">Usuário<input id="username" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="64" required></label>
+        <label for="password">Senha<input id="password" name="password" type="password" autocomplete="current-password" maxlength="128" required></label>
+        <button class="button button-primary login-submit" id="login-submit" type="submit">Entrar</button>
+      </form>
+      <noscript><p class="form-message">Ative o JavaScript para acessar o painel.</p></noscript>
+    </section>
+
+    <section class="workspace" id="workspace" aria-labelledby="catalog-title" hidden>
+      <div id="list-view">
+        <div class="page-heading">
+          <div><h1 id="catalog-title">Modelos da loja.</h1><p class="intro" id="catalog-count">Carregando catálogo…</p></div>
+          <button class="button button-primary" id="new-model" type="button">Adicionar modelo</button>
+        </div>
+        <div class="catalog-toolbar">
+          <label class="search-field" for="model-search">Buscar modelo<input id="model-search" type="search" placeholder="Nome do modelo" autocomplete="off"></label>
+          <button class="button button-secondary" id="refresh-models" type="button">Atualizar catálogo</button>
+        </div>
+        <p class="form-message" id="catalog-message" role="status" aria-live="polite" hidden></p>
+        <div class="model-list" id="model-list" aria-label="Modelos cadastrados"></div>
+        <p class="empty-message" id="empty-models" hidden>Nenhum modelo cadastrado. Adicione o primeiro modelo para começar.</p>
+      </div>
+
+      <section id="editor-view" aria-labelledby="editor-title" hidden>
+        <button class="back-button" id="back-to-list" type="button"><span aria-hidden="true">←</span> Voltar aos modelos</button>
+        <div class="page-heading editor-heading"><div><h1 id="editor-title">Adicionar modelo.</h1><p class="intro">Preencha as informações e escolha a foto principal.</p></div><button class="button button-danger-outline" id="delete-model" type="button" hidden>Excluir modelo</button></div>
+        <p class="form-message" id="editor-message" role="status" aria-live="polite" hidden></p>
+        <form id="model-form">
+          <div class="editor-grid">
+            <div class="editor-fields">
+              <fieldset>
+                <legend>Apresentação</legend>
+                <label for="model-name">Nome do modelo<span class="required-note">Obrigatório</span><input id="model-name" name="name" type="text" maxlength="80" required></label>
+                <label for="model-character">Frase de apresentação<input id="model-character" name="character" type="text" maxlength="100" placeholder="Uma frase curta sobre o modelo"></label>
+                <label for="model-description">Descrição<textarea id="model-description" name="description" rows="4" maxlength="3000" required placeholder="Apresente os principais detalhes do modelo"></textarea></label>
+              </fieldset>
+              <fieldset>
+                <legend>Ficha técnica</legend>
+                <p class="field-help">Motor, autonomia e bateria são obrigatórios, assim como nome e descrição.</p>
+                <div class="field-pair">
+                  <label for="model-motor">Motor<input id="model-motor" name="motor" type="text" required maxlength="100" placeholder="Ex.: 1.000 W"></label>
+                  <label for="model-peak">Potência de pico<input id="model-peak" name="peak" type="text" maxlength="100" placeholder="Ex.: 2.000 W"></label>
+                  <label for="model-range">Autonomia<input id="model-range" name="range" type="text" required maxlength="100" placeholder="Ex.: Até 50 km"></label>
+                  <label for="model-charge">Tempo de carga<input id="model-charge" name="charge" type="text" maxlength="100" placeholder="Ex.: 6 a 8 horas"></label>
+                  <label for="model-battery">Bateria<input id="model-battery" name="battery" type="text" required maxlength="180" placeholder="Ex.: Lítio removível"></label>
+                  <label for="model-capacity">Peso suportado<input id="model-capacity" name="capacity" type="text" maxlength="100" placeholder="Ex.: Até 200 kg"></label>
+                  <label for="model-weight">Peso do veículo<input id="model-weight" name="weight" type="text" maxlength="100" placeholder="Ex.: 65 kg"></label>
+                </div>
+                <label for="model-extra">Observações<textarea id="model-extra" name="extra" rows="3" maxlength="800" placeholder="Informações adicionais que o visitante precisa conhecer"></textarea></label>
+              </fieldset>
+              <fieldset>
+                <legend>Recursos</legend>
+                <label for="model-features">Um recurso por linha<textarea id="model-features" name="features" rows="5" maxlength="2000" placeholder="Chave e NFC&#10;Farol em LED&#10;Bateria removível"></textarea></label>
+              </fieldset>
+            </div>
+            <div class="editor-photos">
+              <fieldset>
+                <legend>Fotos do modelo</legend>
+                <p class="field-help">A primeira foto aparece como principal. As outras ficam na galeria.</p>
+                <label class="upload-label" for="photo-upload">Adicionar fotos<input id="photo-upload" type="file" accept="image/jpeg,image/png,image/webp" multiple></label>
+                <p class="field-help" id="photo-help">JPG, PNG ou WebP. Até 5 MB por foto e 20 fotos por modelo.</p>
+                <p class="upload-progress" id="upload-progress" role="status" aria-live="polite" hidden></p>
+                <div class="photo-list" id="photo-list" aria-label="Fotos na ordem de exibição"></div>
+                <p class="photo-empty" id="photo-empty">Adicione pelo menos uma foto para salvar o modelo.</p>
+              </fieldset>
+            </div>
+          </div>
+          <div class="editor-actions">
+            <label class="publish-choice" for="model-published"><input id="model-published" name="published" type="checkbox" checked><span>Mostrar este modelo no site</span></label>
+            <div class="save-actions"><button class="button button-secondary" id="cancel-edit" type="button">Cancelar</button><button class="button button-primary" id="save-model" type="submit">Salvar modelo</button></div>
+          </div>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <dialog class="confirmation-dialog" id="confirmation-dialog" aria-labelledby="confirmation-title" aria-describedby="confirmation-message">
+    <h2 id="confirmation-title">Confirmar ação</h2>
+    <p id="confirmation-message"></p>
+    <div class="confirmation-actions"><button class="button button-secondary" id="confirmation-cancel" type="button" autofocus>Cancelar</button><button class="button button-primary" id="confirmation-accept" type="button">Confirmar</button></div>
+  </dialog>
+</body>
+</html>

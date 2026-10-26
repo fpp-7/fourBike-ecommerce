@@ -2529,3 +2529,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
     font-size: 15px
   }
 }
+.catalog-feedback { margin-bottom: 28px; }
+.catalog-feedback:has(> p[hidden]):has(> button[hidden]) { display: none; }
+.catalog-feedback button { margin-top: 16px; }
+[hidden] { display: none !important; }
