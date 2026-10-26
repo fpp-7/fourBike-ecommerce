@@ -63,6 +63,8 @@ O armazenamento JSON atende esta operação com um administrador e **um único p
 
 ## Verificar
 
+As fotos iniciais usam versões WebP responsivas, preservando os arquivos originais e as referências do catálogo. Para regenerá-las, consulte [imagens responsivas](docs/IMAGES.md); o conversor usa Python/Pillow somente no desenvolvimento.
+
 ```sh
 npm run check
 npm test

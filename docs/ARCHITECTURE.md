@@ -7,6 +7,7 @@ O produto é um catálogo com atendimento pelo WhatsApp e negociação na loja. 
 - public/index.html e styles.css: conteúdo institucional e identidade visual clara.
 - public/js/app.js: carrega /api/models, renderiza somente modelos publicados e mantém galeria, swipe, teclado e menu. Em falha ou catálogo vazio, mostra estado próprio, sem restaurar modelos de origem.
 - public/js/data/models.js: catálogo inicial e manifesto das fotos existentes. Usado somente ao criar o armazenamento; não é a fonte do catálogo em execução.
+- public/js/data/photo-variants.js e domain/photo-sources.js: manifesto de imagens responsivas e resolução das fontes para capa, cartões, miniaturas e ampliação. Fotos conhecidas usam cópias otimizadas; uploads novos mantêm sua origem. As referências salvas no catálogo não mudam.
 - public/js/data/store.js e simulation.js: contato e premissas do simulador.
 - public/js/domain/costs.js e economy.js: cálculo puro e interface, separados da administração.
 - admin/: login, lista, formulário, publicação e galeria, sem link na navegação pública.

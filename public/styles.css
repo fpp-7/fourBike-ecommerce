@@ -2533,3 +2533,14 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .catalog-feedback:has(> p[hidden]):has(> button[hidden]) { display: none; }
 .catalog-feedback button { margin-top: 16px; }
 [hidden] { display: none !important; }
+
+.hero #hero-title { font-size: clamp(38px,4.4vw,64px); line-height: 1.08; letter-spacing: -.045em; }
+.hero #hero-title br { display: initial; }
+.savings-contact { margin-top: 24px; }
+.savings-contact .button { width: 100%; gap: 12px; }
+.savings-contact .button img { flex-shrink: 0; }
+.savings-contact p { margin-top: 10px; color: var(--page-muted); font-size: 13px; line-height: 1.6; }
+@media(max-width:580px) {
+  .hero #hero-title { font-size: clamp(34px,9.4vw,48px); }
+  .savings-contact .button { font-size: 15px; padding-inline: 16px; }
+}

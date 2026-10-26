@@ -1,11 +1,12 @@
 import { whatsappUrl as whatsapp } from './data/store.js';
+import { applyPhotoSource } from './domain/photo-sources.js';
 
 const $ = (selector) => document.querySelector(selector);
 
-function makePhoto(model, eager = false, photoIndex = 0) {
+function makePhoto(model, eager = false, photoIndex = 0, role = 'detail') {
   const photo = model.photos[photoIndex];
   const img = document.createElement('img');
-  img.src = photo.src;
+  applyPhotoSource(img,photo.src,role);
   img.alt = `${model.name}, foto ${photoIndex + 1} de ${model.photos.length}`;
   img.loading = eager ? 'eager' : 'lazy';
   img.decoding = 'async';
@@ -35,7 +36,7 @@ const photoDialog = $('#photo-dialog');
 
 function updateDialogPhoto() {
   if (!activeModel) return;
-  const photo = makePhoto(activeModel,true,activePhotoIndex);
+  const photo = makePhoto(activeModel,true,activePhotoIndex,'dialog');
   photo.id = 'dialog-photo';
   $('#dialog-photo').replaceWith(photo);
   $('#dialog-title').textContent = activeModel.name;
@@ -75,7 +76,7 @@ function makeThumbnails() {
     button.setAttribute('aria-pressed',String(index === 0));
     button.setAttribute('aria-label',`Ver foto ${index + 1} de ${activeModel.photos.length} do ${activeModel.name}`);
     button.setAttribute('aria-controls','model-photo');
-    const preview = makePhoto(activeModel,false,index);
+    const preview = makePhoto(activeModel,false,index,'thumbnail');
     preview.querySelector('img').alt = '';
     button.append(preview);
     button.addEventListener('click',() => showPhoto(index));
@@ -180,7 +181,7 @@ function renderCatalog() {
   selector.dataset.model = model.id; selector.textContent = model.name; selector.setAttribute('aria-pressed','false');
   switcher.append(selector);
   const article = document.createElement('article'); article.className = 'model-card';
-  const photo = makePhoto(model);
+  const photo = makePhoto(model,false,0,'card');
   const heading = document.createElement('div'); heading.className = 'model-card-name';
   const title = document.createElement('h3'); title.textContent = model.name;
   const button = document.createElement('button'); button.type = 'button'; button.textContent = 'Ver modelo'; button.dataset.selectModel = model.id;
@@ -194,7 +195,7 @@ function renderCatalog() {
  const first = models[0];
  const hero = $('.hero-photo');
  const image = hero.querySelector('img');
- image.src = first?.photos[0].src || './assets/store/store-front.jpeg';
+ applyPhotoSource(image,first?.photos[0].src || './assets/store/store-front.jpeg','hero');
  image.alt = first ? `${first.name}, autopropelido da fourBike` : 'Conheça a loja fourBike em Leme';
  hero.classList.toggle('studio-photo',Boolean(first?.photos[0].studio));
  hero.classList.toggle('original-photo',!first?.photos[0].studio);
@@ -216,7 +217,7 @@ document.addEventListener('click',event => {
   target.focus({preventScroll:true});
   target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',block:'start'});
 });
-document.querySelectorAll('[data-whatsapp]').forEach(link => link.href = whatsapp('Olá! Conheci a fourBike pelo site e gostaria de conversar com a equipe.'));
+document.querySelectorAll('[data-whatsapp]').forEach(link => link.href = whatsapp(link.dataset.whatsappMessage || 'Olá! Conheci a fourBike pelo site e gostaria de conversar com a equipe.'));
 
 const menuButton = $('.menu-toggle');
 const menu = $('#menu');

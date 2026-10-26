@@ -8,7 +8,7 @@
     "start": "node scripts/serve.mjs",
     "admin:setup": "node scripts/admin-user.mjs",
     "check": "node scripts/check.mjs",
-    "test": "node --test tests/costs.test.js tests/server.test.js tests/catalog.test.js tests/admin-http.test.js tests/admin-cli.test.js"
+    "test": "node --test tests/costs.test.js tests/server.test.js tests/catalog.test.js tests/admin-http.test.js tests/admin-cli.test.js tests/photo-sources.test.js"
   },
   "engines": { "node": ">=20" }
 }
