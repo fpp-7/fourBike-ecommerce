@@ -1,0 +1,13 @@
+{
+  "name": "fourbike",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Catálogo público de autopropelidos da fourBike em Leme, SP",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node --test tests/costs.test.js tests/server.test.js tests/catalog.test.js"
+  },
+  "engines": { "node": ">=20" }
+}

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Conheça os autopropelidos da fourBike em Leme, SP. Veja os modelos, converse com a nossa equipe e venha conhecer a loja. Temos assistência técnica.">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light">
+  <title>fourBike — Autopropelidos em Leme</title>
+  <link rel="icon" href="./assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/fonts/Manrope-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./js/app.js" type="module"></script>
+  <script src="./js/economy.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="fourBike, início"><img src="./assets/brand/fourbike.png" alt="fourBike Motos Elétricas" width="1983" height="793"></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+      <nav class="main-nav" id="menu" aria-label="Navegação principal">
+        <a href="#modelos">Modelos</a><a href="#beneficios">Benefícios</a><a href="#sobre">Sobre nós</a><a href="#assistencia">Assistência técnica</a><a href="#loja">A loja</a>
+      </nav>
+      <a class="button button-green header-contact" data-whatsapp href="https://wa.me/5519997229581" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+    </div>
+  </header>
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="location-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg> Autopropelidos em Leme, SP</p>
+        <h1 id="hero-title">Sua rotina,<br>em outro <br>ritmo.</h1>
+        <p class="hero-description">Descubra uma nova forma de se movimentar. Conheça os modelos fourBike e encontre o seu na nossa loja.</p>
+        <a class="button button-black" href="#modelos">Conhecer os modelos <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></a>
+        <p class="hero-footnote">Veja no site. Conheça de perto. Negocie na loja.</p>
+      </div>
+      <div class="hero-visual">
+        <div class="product-photo studio-photo hero-photo">
+          <img src="./assets/models/x18/cover.png" alt="Autopropelido X18 preto com detalhes vermelhos" fetchpriority="high" decoding="async">
+        </div>
+        <div class="hero-caption"><span>Conheça o X18</span><a href="#modelo" data-select-model="x18" aria-label="Ver detalhes do X18"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+      </div>
+    </section>
+
+    <section class="catalog-section" id="modelos" aria-labelledby="catalog-title">
+      <div class="section-heading content-width"><h2 id="catalog-title">Qual combina<br>com o seu caminho?</h2><p>Explore os modelos e os detalhes que fazem diferença no seu dia.</p></div>
+      <div class="model-switcher content-width" role="group" aria-label="Escolher modelo">
+        <button type="button" data-model="x18" aria-pressed="true">X18</button><button type="button" data-model="x13" aria-pressed="false">X13</button><button type="button" data-model="x16" aria-pressed="false">X16</button><button type="button" data-model="n9" aria-pressed="false">N9</button><button type="button" data-model="suica" aria-pressed="false">Suíça</button><button type="button" data-model="cappuccino" aria-pressed="false">Cappuccino</button><button type="button" data-model="tank" aria-pressed="false">Tank</button>
+      </div>
+      <article class="featured-model content-width" id="modelo" aria-labelledby="model-name" tabindex="-1">
+        <div class="featured-image">
+          <div class="model-gallery" id="model-gallery" role="group" aria-label="Fotos do X18">
+            <button class="gallery-open" id="gallery-open" type="button" aria-haspopup="dialog" aria-controls="photo-dialog" aria-label="Ampliar fotos do X18">
+              <span class="product-photo model-photo" id="model-photo"></span>
+              <span class="gallery-expand"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>Ampliar foto</span>
+            </button>
+            <div class="gallery-controls">
+              <button class="photo-arrow" id="gallery-previous" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+              <p class="gallery-status" id="gallery-status" role="status" aria-live="polite" aria-atomic="true"><span id="gallery-kind">Fotos do X18</span><span id="gallery-count">1 / 6</span></p>
+              <button class="photo-arrow" id="gallery-next" type="button" aria-label="Próxima foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
+            </div>
+            <div class="gallery-thumbnails" id="gallery-thumbnails" role="group" aria-label="Escolher foto"></div>
+          </div>
+        </div>
+        <div class="model-information">
+          <p class="model-character" id="model-character"></p>
+          <h3 id="model-name"></h3><p class="model-description" id="model-description"></p>
+          <dl class="model-stats" id="model-stats"></dl>
+          <ul class="feature-list" id="model-features"></ul>
+          <details class="technical-details"><summary>Ver ficha técnica <span aria-hidden="true">+</span></summary><dl id="technical-specs"></dl><p class="spec-note">Informações dos anúncios recebidos, sujeitas à confirmação pela equipe. A autonomia varia conforme peso, terreno e condições de uso.</p></details>
+          <a class="button button-black model-contact" id="model-contact" href="https://wa.me/5519997229581" target="_blank" rel="noopener noreferrer">Consultar este modelo no WhatsApp</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="collection content-width" aria-labelledby="collection-title">
+      <div class="section-heading"><h2 id="collection-title">Todos os modelos.<br>Seu próximo movimento.</h2><p>Do visual retrô ao estilo mais robusto, conheça cada um de perto.</p></div>
+      <div class="model-grid" id="model-grid"></div>
+      <noscript><p>Para explorar o catálogo interativo, ative o JavaScript. Você também pode <a href="https://wa.me/5519997229581">consultar todos os modelos no WhatsApp</a>.</p></noscript>
+    </section>
+
+    <section class="benefits-section" id="beneficios" aria-labelledby="benefits-title">
+      <div class="content-width">
+        <div class="section-heading"><h2 id="benefits-title">Economia na<br>ponta do lápis.</h2><p>Compare gasolina e recarga. Veja o que pode mudar no seu gasto para percorrer o mesmo trajeto.</p></div>
+        <div class="savings-calculator" id="savings-calculator" hidden>
+          <div class="savings-controls">
+            <fieldset class="savings-vehicle" aria-describedby="vehicle-reference">
+              <legend>O que você usa hoje?</legend>
+              <div class="savings-vehicle-options">
+                <label for="vehicle-car"><input id="vehicle-car" type="radio" name="vehicle-type" value="car"><span>Carro</span></label>
+                <label for="vehicle-motorcycle"><input id="vehicle-motorcycle" type="radio" name="vehicle-type" value="motorcycle" checked><span>Moto</span></label>
+              </div>
+            </fieldset>
+            <p class="vehicle-reference" id="vehicle-reference"><span id="vehicle-reference-text"></span> <a id="vehicle-reference-source" href="https://motociclismoonline.com.br/testes/testamos-a-honda-cg-160-fan-a-mais-vendida-do-brasil/" target="_blank" rel="noopener noreferrer">Ver teste da Motociclismo.</a></p>
+            <h3>Quanto você roda por mês?</h3>
+            <div class="savings-distance"><output id="distance-value" for="monthly-distance">—</output><span>por mês</span></div>
+            <label class="visually-hidden" for="monthly-distance">Distância percorrida por mês, em quilômetros</label>
+            <input id="monthly-distance" type="range" min="0" max="3000" step="50" aria-describedby="distance-help">
+            <div class="savings-range-ends" aria-hidden="true"><span>0 km</span><span>3.000 km</span></div>
+            <p class="savings-help" id="distance-help">Mova o controle para simular a sua rotina.</p>
+            <details class="savings-assumptions">
+              <summary>Ajustar valores e entender a conta</summary>
+              <p>O exemplo não é um teste dos modelos da loja. Use os valores do seu trajeto e da sua conta de luz para aproximar a estimativa da sua realidade.</p>
+              <div class="savings-fields">
+                <label for="petrol-price">Gasolina (R$/litro)<input id="petrol-price" type="number" inputmode="decimal" min="0" max="30" step="0.01" required></label>
+                <label for="petrol-efficiency"><span id="petrol-efficiency-label">Consumo da sua moto (km/l)</span><input id="petrol-efficiency" type="number" inputmode="decimal" min="1" max="150" step="any" required></label>
+                <label for="electricity-price">Energia com tributos (R$/kWh)<input id="electricity-price" type="number" inputmode="decimal" min="0" max="10" step="any" required aria-describedby="electricity-reference"></label>
+                <label for="battery-energy">Capacidade estimada da bateria (kWh)<input id="battery-energy" type="number" inputmode="decimal" min="0.1" max="10" step="any" required></label>
+                <label for="electric-range">Percurso por carga (km)<input id="electric-range" type="number" inputmode="decimal" min="1" max="200" step="any" required></label>
+              </div>
+              <p>O exemplo inicial adota uma capacidade média estimada de 1 kWh e percurso de 40 km por carga. São parâmetros ajustáveis da simulação, sem medição da média dos modelos da loja. O consumo do veículo a gasolina segue a referência mostrada acima ou o valor que você informar.</p>
+              <p id="electricity-method">Referência inicial de energia: Enel São Paulo, residencial convencional. Tarifa base de R$ 0,78938/kWh, válida desde 04/07/2026. O valor com tributos é estimado com ICMS de 18% (consumo total da residência acima de 200 kWh) e PIS/Cofins de 4,90% (janeiro/2026, última referência publicada na tabela consultada; varia a cada mês). Cálculo: base ÷ (1 − 18%) ÷ (1 − 4,90%). Bandeira verde em outubro/2026, sem adicional. Não inclui iluminação pública. <a href="https://www.enel.com.br/pt-saopaulo/Para_Voce/tarifa-taxas-e-impostos.html" target="_blank" rel="noopener noreferrer">Tributos Enel SP</a> e <a href="https://www.gov.br/aneel/pt-br/assuntos/noticias/2026-defeso-eleitoral/outubro-tera-bandeira-verde-contas-de-luz-sem-custo-extra" target="_blank" rel="noopener noreferrer">bandeira ANEEL</a>.</p>
+              <p id="savings-formula"></p>
+              <button class="savings-reset" id="savings-reset" type="button">Restaurar exemplo inicial</button>
+            </details>
+          </div>
+          <div class="savings-results" aria-labelledby="savings-results-title">
+            <h3 id="savings-results-title">Gasto mensal para rodar</h3>
+            <p class="electricity-reference" id="electricity-reference"><span id="electricity-reference-text"></span> <a id="electricity-reference-source" href="https://www.enel.com.br/pt-saopaulo/Para_Voce/tarifa-energia-eletrica.html" target="_blank" rel="noopener noreferrer">Fonte: Enel SP.</a></p>
+            <div class="savings-comparison">
+              <div class="savings-cost"><div><span id="petrol-vehicle-label">Honda CG 160 Fan</span><strong id="petrol-monthly">—</strong></div><div class="savings-track" aria-hidden="true"><span id="petrol-bar"></span></div><small id="petrol-per-km"></small></div>
+              <div class="savings-cost"><div><span>Recarga elétrica</span><strong id="electric-monthly">—</strong></div><div class="savings-track savings-track-electric" aria-hidden="true"><span id="electric-bar"></span></div><small id="electric-per-km"></small></div>
+            </div>
+            <div class="savings-difference" id="savings-difference" data-outcome="saving">
+              <p id="savings-result-label">Economia anual estimada em recarga</p>
+              <p class="savings-amount"><strong id="savings-yearly">—</strong><span>/ano</span></p>
+              <p class="savings-monthly-line"><strong id="savings-monthly">—</strong><span> por mês</span></p>
+              <p id="savings-percentage"></p>
+            </div>
+            <p class="savings-error" id="savings-error" hidden>Confira os campos destacados em “Ajustar valores e entender a conta”. Preencha valores válidos para calcular.</p>
+            <p class="visually-hidden" id="savings-live" role="status" aria-live="polite" aria-atomic="true"></p>
+          </div>
+          <div class="savings-context">
+            <p>Simulação apenas de gasolina × eletricidade, para trajetos que ambas as opções possam atender. Não inclui compra, manutenção, seguro, depreciação ou troca da bateria. Autonomia e consumo variam com peso, terreno e uso.</p>
+            <p>Gasolina inicial: média do estado de SP, de 11 a 17/10/2026, <a href="https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas" target="_blank" rel="noopener noreferrer">fonte ANP</a>. Energia inicial: referência Enel São Paulo com tributos estimados, não uma tarifa única para todo o estado. O preço final varia com a distribuidora, o consumo e os tributos. Bateria e percurso da elétrica continuam ilustrativos.</p>
+          </div>
+        </div>
+        <noscript><p class="savings-no-script">Converse com a nossa equipe para comparar o gasto de gasolina e recarga no seu trajeto. Ative o JavaScript para usar o simulador de economia.</p></noscript>
+        <div class="benefits-grid">
+          <article class="benefit-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18m5-14H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><div><h3>Sem óleo de motor e velas</h3><p>O motor elétrico dispensa esses itens do motor a combustão. Pneus, freios, suspensão e bateria continuam precisando de cuidados.</p></div></article>
+          <article class="benefit-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v5m6-5v5M7 8h10v3a5 5 0 0 1-10 0V8Zm5 8v5"/></svg><div><h3>Recarga na sua rotina</h3><p>Nos modelos com bateria removível, leve a bateria ao ponto de recarga. Use o carregador e a instalação indicados para o modelo.</p></div></article>
+          <article class="benefit-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg><div><h3>Escolha presencial</h3><p>Veja os modelos de perto na nossa loja em Leme. Tire suas dúvidas com a equipe antes de negociar pessoalmente.</p></div></article>
+          <article class="benefit-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></svg><div><h3>Assistência técnica</h3><p>A fourBike também oferece assistência técnica. Entre em contato com a nossa equipe para conhecer o atendimento.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="sobre" aria-labelledby="about-title">
+      <div class="about-inner content-width">
+        <div class="about-image"><img src="./assets/store/store-front.jpeg" alt="Fachada da loja fourBike em Leme" loading="lazy" decoding="async"></div>
+        <div class="about-copy"><h2 id="about-title">A fourBike é daqui.<br>E o atendimento<br>é de perto.</h2><p>Somos uma loja de autopropelidos em Leme, no interior de São Paulo.</p><p>O site é o primeiro contato. Na loja, você conhece os modelos, conversa com a nossa equipe e negocia pessoalmente.</p><a class="text-link light-link" href="#loja">Venha conhecer a fourBike <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+      </div>
+    </section>
+
+    <section class="assistance-section" id="assistencia" aria-labelledby="assistance-title">
+      <div class="assistance-inner content-width"><div class="assistance-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></svg></div><div><h2 id="assistance-title">Temos assistência técnica.</h2><p>A fourBike também oferece assistência técnica para o seu autopropelido. Converse com a equipe para saber mais sobre o atendimento.</p></div><a class="button button-black" data-whatsapp href="https://wa.me/5519997229581" target="_blank" rel="noopener noreferrer">Entre em contato com a nossa equipe</a></div>
+    </section>
+
+    <section class="visit-section content-width" id="loja" aria-labelledby="visit-title">
+      <div><h2 id="visit-title">Seu próximo caminho<br>começa aqui.</h2><p>Venha conhecer os modelos na nossa loja em Leme.</p></div>
+      <div class="visit-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg><div><h3>fourBike, Leme</h3><address>Avenida da Saudade, 225<br>Leme, São Paulo</address><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Avenida%20da%20Saudade%20225%20Leme%20SP" target="_blank" rel="noopener noreferrer">Abrir localização <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a><p class="visit-note">Consulte os horários com a nossa equipe pelo <a data-whatsapp href="https://wa.me/5519997229581" target="_blank" rel="noopener noreferrer">WhatsApp</a>.</p></div></div>
+    </section>
+  </main>
+  <dialog class="photo-dialog" id="photo-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-photo-status">
+    <div class="photo-dialog-header"><h2 id="dialog-title">X18</h2><button class="dialog-close" id="dialog-close" type="button" aria-label="Fechar fotos" autofocus><span>Fechar</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div>
+    <div class="product-photo" id="dialog-photo"></div>
+    <div class="photo-dialog-controls"><button class="photo-arrow" id="dialog-previous" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><p id="dialog-photo-status" role="status" aria-live="polite" aria-atomic="true"></p><button class="photo-arrow" id="dialog-next" type="button" aria-label="Próxima foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button></div>
+  </dialog>
+  <footer class="site-footer"><div class="footer-main content-width"><a class="brand footer-brand" href="#inicio" aria-label="fourBike, voltar ao início"><img src="./assets/brand/fourbike.png" alt="fourBike Motos Elétricas" width="1983" height="793" loading="lazy"></a><p>Mais mobilidade para o seu dia.</p><div><a href="https://www.instagram.com/four.bike/" target="_blank" rel="noopener noreferrer">Instagram</a><a data-whatsapp href="https://wa.me/5519997229581" target="_blank" rel="noopener noreferrer">WhatsApp</a></div></div><div class="footer-bottom content-width"><span>fourBike — Leme, SP</span><a href="#inicio">Voltar ao início</a></div></footer>
+  <a class="floating-contact" data-whatsapp href="https://wa.me/5519997229581" target="_blank" rel="noopener noreferrer" aria-label="Conversar com a fourBike no WhatsApp"><img src="./assets/brand/whatsapp/whatsapp-white-official.svg" alt="" width="34" height="34" aria-hidden="true"></a>
+</body>
+</html>

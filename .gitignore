@@ -1,0 +1,19 @@
+# Local source materials, internal discovery and previous prototype snapshot.
+/assets/
+/docs/discovery/
+/dist/
+/tmp/
+
+# Dependencies, local configuration and generated output.
+node_modules/
+coverage/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+/.vscode/
+/.idea/
+/.codex/
+/.aws/
