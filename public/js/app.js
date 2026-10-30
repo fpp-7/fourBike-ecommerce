@@ -168,7 +168,7 @@ function selectModel(id, announce = true) {
   if(model.weight) addDefinition(specs,'Peso do veículo informado',model.weight);
   if(model.extra) addDefinition(specs,'Observação',model.extra);
   $('.technical-details').open = false;
-  $('#model-contact').href = whatsapp(`Olá! Conheci o ${model.name} no site da fourBike e gostaria de saber mais para visitar a loja.`);
+  $('#model-contact').href = whatsapp(`Olá! Conheci o ${model.name} no site da Four Bike e gostaria de saber mais para visitar a loja.`);
   document.querySelectorAll('[data-model]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.model === id)));
   if(announce) announcer.textContent = `Modelo ${model.name} selecionado. Foto e ficha técnica atualizadas.`;
 }
@@ -196,10 +196,10 @@ function renderCatalog() {
  const hero = $('.hero-photo');
  const image = hero.querySelector('img');
  applyPhotoSource(image,first?.photos[0].src || './assets/store/store-front.jpeg','hero');
- image.alt = first ? `${first.name}, autopropelido da fourBike` : 'Conheça a loja fourBike em Leme';
+ image.alt = first ? `${first.name}, autopropelido da Four Bike` : 'Conheça a loja Four Bike em Leme';
  hero.classList.toggle('studio-photo',Boolean(first?.photos[0].studio));
  hero.classList.toggle('original-photo',!first?.photos[0].studio);
- $('.hero-caption span').textContent = first ? `Conheça o ${first.name}` : 'Venha conhecer a fourBike';
+ $('.hero-caption span').textContent = first ? `Conheça o ${first.name}` : 'Venha conhecer a Four Bike';
  const link = $('.hero-caption a');
  link.href = first ? '#modelo' : '#loja';
  link.setAttribute('aria-label',first ? `Ver detalhes do ${first.name}` : 'Conhecer a loja');
@@ -217,7 +217,7 @@ document.addEventListener('click',event => {
   target.focus({preventScroll:true});
   target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',block:'start'});
 });
-document.querySelectorAll('[data-whatsapp]').forEach(link => link.href = whatsapp(link.dataset.whatsappMessage || 'Olá! Conheci a fourBike pelo site e gostaria de conversar com a equipe.'));
+document.querySelectorAll('[data-whatsapp]').forEach(link => link.href = whatsapp(link.dataset.whatsappMessage || 'Olá! Conheci a Four Bike pelo site e gostaria de conversar com a equipe.'));
 
 const menuButton = $('.menu-toggle');
 const menu = $('#menu');
